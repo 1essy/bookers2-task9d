@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "search" => "searches#search"
   resources :users, :only => [:index,:show,:edit,:update]
   resources :messages, :only => [:create]
-  resources :rooms, :only => [:create, :show]
+  resources :rooms, :only => [:create, :show,]
   
   resources :users do
     resource :relationships, only: [:create, :destroy]

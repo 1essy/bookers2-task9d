@@ -17,29 +17,29 @@
           </td>
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
-          
-          
-        
+
+
+
           <td id="favorite_buttons_<%= @book.id %>">
             <%= render 'favorites/favorites', book: @book %>
           </td>
-          
-          
-          
+
+          <td class="view-count">閲覧数: <%= @book_detail.view_counts.count %></td>
+
           <% if @book.user == current_user %>
           <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
           <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
           <% end %>
         </tr>
       </table>
-      
+
       <div id="comments_area">
         <%= render 'book_comments/book_comments', book: @book %>
       </div>
       <div id="new-comment">
         <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
       </div>
-      
+
     </div>
   </div>
 </div>

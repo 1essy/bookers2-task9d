@@ -15,9 +15,12 @@ class User < ApplicationRecord
   # 一覧画面で使う
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  
+  # DM機能予定
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
+  has_many :rooms, through: :entries
+  # 閲覧数
+  has_many :view_counts, dependent: :destroy
   
   # フォローしたときの処理
   def follow(user_id)
