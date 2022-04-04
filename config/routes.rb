@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   get "search" => "searches#search"
-  resources :users, :only => [:index,:show,:edit,:update]
+  resources :users, :only => [:index,:show,:edit,:update] do
+    get "search", to: "users#search"
+  end
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show,]
   
