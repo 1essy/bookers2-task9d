@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show,]
+  resources :groups, except: [:destroy]
   
   resources :users do
     resource :relationships, only: [:create, :destroy]
