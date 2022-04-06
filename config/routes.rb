@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   end
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show,]
+  
   resources :groups, except: [:destroy]
+  resources :groups do     
+    get "join" => "groups#join"
+  end
   
   resources :users do
     resource :relationships, only: [:create, :destroy]
@@ -22,6 +26,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
+  
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
