@@ -29,9 +29,15 @@ class Book < ApplicationRecord
       @book = Book.where("title LIKE?","%#{word}")
     elsif search == "partial_match"
       @book = Book.where("title LIKE?","%#{word}%")
+    elsif search == "tag_perfect_match"
+      @book = Book.where("category LIKE?","%#{word}")
     else
       @book = Book.all
     end
+  end
+  
+  def self.search(search_word)
+    Book.where(['category LIKE ?', "#{search_word}"])
   end
   
   def favorited_by?(user)

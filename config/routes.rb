@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   get "search" => "searches#search"
+  get "search_book" => "books#search_book"
   resources :users, :only => [:index,:show,:edit,:update] do
     get "search", to: "users#search"
   end

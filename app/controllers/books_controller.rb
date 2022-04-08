@@ -20,8 +20,12 @@ class BooksController < ApplicationController
     @book = Book.new
   end
   
+  def search_book
+     
+     @books = Book.search(params[:keyword])
+  end
+  
   def create
-
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
@@ -54,7 +58,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :category)
   end
   def ensure_correct_user
       @book = Book.find(params[:id])
