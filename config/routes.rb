@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get "search", to: "users#search"
   end
   resources :messages, :only => [:create]
-  resources :rooms, :only => [:create, :show,]
+  resources :rooms, :only => [:create, :show]
   
   resources :groups, except: [:destroy]
   resources :groups do     
