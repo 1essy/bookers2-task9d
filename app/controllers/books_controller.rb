@@ -22,8 +22,7 @@ class BooksController < ApplicationController
   
   def search_book
      
-     @books = Book.search(params[:keyword])
-  end
+     @books = Book.search(params[:keyword]) end
   
   def create
     @book = Book.new(book_params)
